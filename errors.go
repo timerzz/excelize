@@ -11,7 +11,10 @@
 
 package excelize
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 func newInvalidColumnNameError(col string) error {
 	return fmt.Errorf("invalid column name %q", col)
@@ -28,3 +31,18 @@ func newInvalidCellNameError(cell string) error {
 func newInvalidExcelDateError(dateValue float64) error {
 	return fmt.Errorf("invalid date value %f, negative values are not supported supported", dateValue)
 }
+
+var (
+	// ErrUnknownEncryptMechanism defined the error message on unsupported
+	// encryption mechanism.
+	ErrUnknownEncryptMechanism = errors.New("unknown encryption mechanism")
+	// ErrUnsupportedEncryptMechanism defined the error message on unsupported
+	// encryption mechanism.
+	ErrUnsupportedEncryptMechanism = errors.New("unsupported encryption mechanism")
+	// ErrPasswordLengthInvalid defined the error message on invalid password
+	// length.
+	ErrPasswordLengthInvalid = errors.New("password length invalid")
+	// ErrUnsupportedHashAlgorithm defined the error message on unsupported
+	// hash algorithm.
+	ErrUnsupportedHashAlgorithm = errors.New("unsupported hash algorithm")
+)
